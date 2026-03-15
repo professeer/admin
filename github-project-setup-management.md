@@ -113,7 +113,7 @@ git clone git@github.com:professeer/admin.git
 |---------------|------|------|
 | `reasonablecode` | Siddarth | Engineering lead. Approves PRs on platform and scrapers. |
 | `bhargavizaveri` | Bhargavi | CEO. Owns product priorities, milestone planning, feature prioritization. |
-| `gokulksunoj` | Gokul | Feature extraction, research. |
+| `gokulatwork26` | Gokul | Feature extraction, research. |
 | `srikanthrajkumar` | Srikanth | Scrapers, QA/QC. |
 
 All team members have push access to all repos.
