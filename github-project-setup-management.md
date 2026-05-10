@@ -220,29 +220,46 @@ Fixes #42
 
 ## 5. Project Management Workflow
 
-### Cadence
+### Release cadence
 
-| Unit | Duration | Purpose |
-|------|----------|---------|
-| **Sprint** | 15 days | A work cycle. Mix of tasks decided during sprint planning. |
-| **Milestone** | 2+ sprints (30+ days) | A goal-based deliverable. Done when its issues are closed. |
+Releases ship on the **last Sunday of each month**. See [RELEASE.md](RELEASE.md) for the full operational model.
 
-### Sprint planning
+| Release | Code freeze | QA window | Prod deploy |
+|---------|-------------|-----------|-------------|
+| v1.1 – May 2026 | 2026-05-17 | 05-17 → 05-31 | 2026-05-31 (Sun) |
+| v1.2 – June 2026 | 2026-06-14 | 06-14 → 06-28 | 2026-06-28 (Sun) |
 
-At the start of each sprint:
+Each milestone = one release. Two sprints per milestone:
 
-1. Review the project board — what's in progress, what's blocked, what's done.
-2. Pull issues from the milestone backlog into the sprint.
-3. Assign owners. Mix of types: features, bugs, research, QA.
-4. Set deadlines on sprint issues.
-5. Record the sprint plan as a GitHub issue or discussion.
+| Sprint | Duration | Focus |
+|--------|----------|-------|
+| Sprint A — Development | Days 1–14 | Feature work, PRs merged to `qa` |
+| Sprint B — QA | Days 15–28 (post-freeze) | Testing, bug triage, staging |
+
+**Code freeze** is the Sunday 2 weeks before release. After freeze: bugfixes only. No new features.
 
 ### Milestone planning
 
-- **Bhargavi** owns milestone goals, feature prioritization, and product direction.
-- Milestones are created in GitHub: `Settings → Milestones → New milestone`.
-- Each milestone has a clear goal statement and a target date.
-- Everyone contributes to milestone planning, but Bhargavi holds the final decision on product scope.
+- One milestone per release per repo (`v1.1 – May 2026`, `v1.2 – June 2026`, etc.).
+- Milestones are the only release-tracking mechanism — no release labels.
+- **Bhargavi** owns product priorities and milestone scope. Siddarth owns technical scope and capacity.
+- Milestone due date = prod deploy Sunday. Create milestones in GitHub: `Settings → Milestones → New milestone`.
+- Issues not finishing in time? Move them to the next milestone before the freeze date. Ship what's ready — don't delay the release.
+
+### Sprint planning
+
+At the start of Sprint A:
+
+1. Review the project board — what's in progress, what's blocked, what's done.
+2. Pull issues from the milestone backlog into Sprint A.
+3. Assign owners. Mix of types: features, bugs, research, QA.
+4. Confirm all Sprint A issues can realistically land before the freeze.
+
+At the start of Sprint B (freeze day):
+
+1. Triage any open milestone issues — close, move, or keep as bugfix targets.
+2. Run a full QA pass against staging.
+3. No new feature PRs accepted from this point.
 
 ### Issue lifecycle
 
@@ -273,7 +290,7 @@ Every issue gets **one type label** and **one priority label**:
 ### Issue assignment
 
 - **Anyone can assign issues to anyone**, including themselves.
-- **Anyone can create issues.** If you see a bug, create an issue and fix it. Even if it's small. The record helps against future reported bugs.
+- **Anyone can create issues.** If you see a bug, create an issue and fix it. Even if it's small.
 - **Small issues don't need permission.** If it's not on the milestone and it's small, just do it and document it.
 - **Milestone issues** are planned during sprint planning.
 
