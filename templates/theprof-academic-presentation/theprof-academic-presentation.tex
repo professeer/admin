@@ -1,0 +1,125 @@
+% =============================================================================
+% TheProfesseer — Academic Presentation (Beamer template)
+% Engine: pdflatex  (build: latexmk -pdf theprof-academic-presentation.tex)
+% Brand crimson #7B0925 lives in beamercolorthemeprofesseer.sty.
+% This is a BLANK skeleton: fill the % TODO frames with your content.
+% =============================================================================
+\documentclass[aspectratio=169]{beamer}
+\usepackage{graphicx}
+\usepackage{beamercolorthemeprofesseer}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{amssymb}
+
+\definecolor{profCrimson}{HTML}{7B0925}
+\setbeamercolor{item}{fg=profCrimson}
+
+% ---- Brand mark in the top-right corner of every slide ----------------------
+\logo{%
+  \begin{tikzpicture}[overlay,remember picture]
+    \node[left=0.5cm][above=0.5cm] at (current page.330){%
+      \includegraphics[width=0.75cm]{professeer-mark-crimson.png}};
+  \end{tikzpicture}
+}
+
+\mode<presentation>{\usetheme{boxes}}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+% ---- Section divider frame --------------------------------------------------
+\AtBeginSection[]{%
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+% ---- Big centred statement: \fullpage{...} ----------------------------------
+\newcommand{\fullpage}[1]{%
+  \begin{frame}
+    \vfill
+    {\Large #1}
+    \vfill
+  \end{frame}
+}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth]{terciary}
+    \hfill\raggedleft\footnotesize\vspace{0.1cm}\hspace{0.1cm}%
+    \insertframenumber{} / \inserttotalframenumber{}\hspace{0.1cm}
+  \end{beamercolorbox}
+}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, citecolor=blue, linkcolor=profCrimson, urlcolor=blue}
+
+% ---- TODO: title metadata ---------------------------------------------------
+\title{Presentation Title}
+\author{TheProfesseer}
+
+\hypersetup{pdfauthor  = {TheProfesseer},
+            pdftitle   = {Presentation Title},
+            pdfsubject = {}}
+
+\begin{document}
+
+% ---- Title slide ------------------------------------------------------------
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ---- Agenda (optional) ------------------------------------------------------
+\begin{frame}{Agenda}
+  \tableofcontents
+\end{frame}
+
+\section{Section one}
+
+% ---- TODO: a standard bullet slide ------------------------------------------
+\begin{frame}{Slide title}
+  \begin{itemize}
+    \item First point. Use \texttt{\textbackslash pause} to reveal points one at a time.
+    \item Second point.
+    \item Third point.
+  \end{itemize}
+\end{frame}
+
+% ---- TODO: a two-column slide (text + table/figure) -------------------------
+\begin{frame}{Two-column layout}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item Left column for narrative.
+        \item Explain the point here.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \raggedleft
+      % Drop a \includegraphics or tabular here.
+      \fbox{\parbox[c][3cm][c]{0.9\linewidth}{\centering figure / table}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Section two}
+
+\fullpage{A big centred statement for emphasis.}
+
+% ---- Closing ----------------------------------------------------------------
+\begin{frame}{Thank you}
+  \centering
+  \vfill
+  {\Large Questions?}\\[1em]
+  \footnotesize careers@theprofesseer.com
+  \vfill
+\end{frame}
+
+\end{document}

@@ -19,4 +19,5 @@ reusable document templates, and brand assets.
 
 ## Templates
 
-- [`templates/theprof-letterhead/`](templates/theprof-letterhead/) — branded one-page LaTeX letterhead (crimson header band, owl footer, Manrope type). Self-contained; see its `README.md` for Overleaf and local build steps. Compile with **LuaLaTeX**.
+- [`templates/theprof-letterhead/`](templates/theprof-letterhead/) — branded one-page LaTeX letterhead (crimson header band, owl footer, Manrope type). Self-contained; see its `README.md` for build steps. Compile with **LuaLaTeX**.
+- [`templates/theprof-academic-presentation/`](templates/theprof-academic-presentation/) — branded Beamer slide deck (crimson accents, owl mark, frame-numbered footer). Blank skeleton; see its `README.md`. Compile with **pdfLaTeX**.
