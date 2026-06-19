@@ -1,4 +1,4 @@
-# TheProfesseer — Letterhead Template
+# TheProfesseer: Letterhead Template
 
 Branded LaTeX letterhead/document template (crimson header band, owl footer,
 Manrope typography). The sample document is a job description, but the layout
