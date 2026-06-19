@@ -1,0 +1,58 @@
+% !TEX program = lualatex
+% =============================================================================
+% TheProfesseer — Job Description (portrait A4, branded boilerplate)
+% Engine: lualatex  (build: latexmk -lualatex professeer-jd.tex)
+% House style lives in sty/professeer.sty. Logos in public/.
+% Role: Software Engineering Intern (filled).
+% =============================================================================
+\documentclass[11pt]{article}
+\usepackage{sty/professeer}
+
+\hypersetup{
+  pdfauthor  = {TheProfesseer},
+  pdftitle   = {TheProfesseer — Job Description},
+  pdfsubject = {Open role},
+}
+
+\begin{document}
+\pagestyle{empty}
+
+% ---- Branded header band (white logo on crimson) ------------------------
+\jdheader{}
+
+% ---- Role title + meta line ---------------------------------------------
+\jdtitle{Software Engineering Intern}{Remote \textperiodcentered\ Rolling start \textperiodcentered\ Paid}
+
+\vspace{4mm}
+
+% ---- Body (single column) ------------------------------------------------
+
+\jdsection{About the role}
+We turn raw court-case data into intelligence. As a full-stack technical intern, you'll work directly with our engineering team across ETL pipelines that ingest our data to the interfaces that make it useful. Start anytime from July onwards, with a minimum commitment of two months.
+
+\jdsection{What we're looking for}
+\begin{itemize}
+  \item Currently in final year of an undergraduate or masters program (CS, Engineering, Data Science, Economics or related)
+  \item Solid programming fundamentals in Python; comfort with JavaScript/TypeScript is a plus
+  \item At least one self-initiated project outside of regular coursework that you can walk us through (personal, papers, hackathon, freelance etc.)
+  \item Self-directed with clear written communication skills
+\end{itemize}
+
+\jdsection{Nice to have}
+\begin{itemize}
+  \item You're curious about more than just tech. Our team wears many hats — one lunch we argue over politics, the next over fashion — and even over a screen, we'd love someone who jumps into those kind of conversations.
+\end{itemize}
+
+\jdsection{What we offer}
+\begin{itemize}
+  \item ₹15k a month + a subscription to Claude or Codex for the period.
+  \item A real shot at a full-time role. We see this internship as a way to find people we want to build with long-term.
+\end{itemize}
+
+\jdsection{How to apply}
+Email your CV to \href{mailto:careers@theprofesseer.com}{\textcolor{profCrimson}{\underline{careers@theprofesseer.com}}}, and include a link to the project you'd most like to walk us through, your earliest start date, and how long you can commit.
+
+% ---- Branded footer ------------------------------------------------------
+\jdfooter{}
+
+\end{document}
