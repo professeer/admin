@@ -9,7 +9,7 @@ reusable document templates, and brand assets.
 |--------|---------------|
 | [`guides/`](guides/) | Team playbooks — development process, GitHub project setup, release cadence. |
 | [`templates/`](templates/) | Reusable document templates. Currently: the branded LaTeX letterhead. |
-| [`logos/`](logos/) | Brand logo kit (lockup + mark, light/dark/mono, SVG + PNG). See [`logos/README.md`](logos/README.md). |
+| [`logos/`](logos/) | Brand logo kit — lockup + mark, in crimson (light bg) and white (dark bg), SVG + PNG. See [`logos/README.md`](logos/README.md). |
 
 ## Guides
 
