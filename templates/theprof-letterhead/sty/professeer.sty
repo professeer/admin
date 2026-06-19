@@ -1,0 +1,120 @@
+% professeer.sty — TheProfesseer house style for landscape job-description docs.
+% Engine: lualatex (fontspec). Brand: Deep Crimson #7B0925, Manrope throughout.
+% Mirrors the brand tokens in professeer_style_guide_v2.md.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sty/professeer}[2026/06/06 TheProfesseer JD house style]
+
+% ---- Core packages -------------------------------------------------------
+% Side gutters = text margins; top margin clears the crimson header band.
+\RequirePackage[a4paper,top=36mm,bottom=22mm,left=22mm,right=22mm]{geometry}
+\RequirePackage{fontspec}
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\RequirePackage{enumitem}
+\RequirePackage{multicol}
+\RequirePackage{fontawesome5}
+\RequirePackage[hidelinks]{hyperref}
+\usetikzlibrary{calc}
+\setlength{\parindent}{0pt}
+
+% ---- Brand palette (from professeer_style_guide_v2.md) -------------------
+\definecolor{profCrimson}{HTML}{7B0925} % --primary
+\definecolor{profInk}{HTML}{141414}     % --foreground (headings/near-black)
+\definecolor{profBody}{HTML}{595959}    % --muted-foreground (body text)
+\definecolor{profOffwhite}{HTML}{F5F4F2}% --secondary
+\definecolor{profWarm}{HTML}{F2EFEB}    % --warm-surface
+\definecolor{profBorder}{HTML}{E8E5E0}  % --border
+\definecolor{profBlush}{HTML}{F5E4E8}   % --accent (light crimson)
+
+% ---- Typography ----------------------------------------------------------
+% Manrope throughout — body and headings. TTFs live in fonts/.
+\setmainfont{Manrope}[
+  Path           = fonts/,
+  Extension      = .ttf,
+  UprightFont    = *-Regular,
+  BoldFont       = *-Bold,
+  FontFace       = {sb}{n}{*-SemiBold},
+  FontFace       = {eb}{n}{*-ExtraBold},
+]
+\setsansfont{Manrope}[
+  Path           = fonts/,
+  Extension      = .ttf,
+  UprightFont    = *-Regular,
+  BoldFont       = *-Bold,
+  FontFace       = {sb}{n}{*-SemiBold},
+]
+\newcommand{\headingfont}{\bfseries}  % Manrope Bold for headings
+\color{profBody}
+
+% ---- Logo paths ----------------------------------------------------------
+\newcommand{\profLogoWhite}{public/professeer-logo-white.png}
+\newcommand{\profLogoCrimson}{public/professeer-logo-crimson.png}
+\newcommand{\profLogoInk}{public/professeer-logo-ink.png}
+\newcommand{\profMarkWhite}{public/professeer-mark-white.png}
+\newcommand{\profMarkCrimson}{public/professeer-mark-crimson.png}
+
+% ---- Page geometry helpers ----------------------------------------------
+% Inner content width: full page minus symmetric side gutters.
+\newlength{\profgutter}\setlength{\profgutter}{20mm}
+\newlength{\profcontentwidth}
+\setlength{\profcontentwidth}{\dimexpr\paperwidth-2\profgutter\relax}
+
+% ---- Header band (full-bleed, page-anchored) -----------------------------
+% \jdheader  — crimson band across the page top: white logo left, site right.
+% Uses remember-picture/overlay, so it ignores margins. Needs two compiles.
+\newlength{\profbandheight}\setlength{\profbandheight}{26mm}
+\newcommand{\jdheader}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[profCrimson]
+      (current page.north west) rectangle
+      ([yshift=-\profbandheight]current page.north east);
+    \node[anchor=west,inner sep=0pt] at
+      ([xshift=\profgutter,yshift=-0.5\profbandheight]current page.north west)
+      {\includegraphics[height=11mm]{\profLogoWhite}};
+    \node[anchor=east,inner sep=0pt,text=white] at
+      ([xshift=-\profgutter,yshift=-0.5\profbandheight]current page.north east)
+      {\small\faGlobe~\,theprofesseer.com};
+  \end{tikzpicture}%
+}
+
+% ---- Title block ---------------------------------------------------------
+% \jdtitle{Role title}{Meta line (Location · Type · Team …)}
+\newcommand{\jdtitle}[2]{%
+  {\headingfont\fontsize{24}{28}\selectfont\color{profInk} #1\par}%
+  \vspace{3mm}%
+  {\color{profBody} #2\par}%
+}
+
+% ---- Section heading -----------------------------------------------------
+\newcommand{\jdsection}[1]{%
+  \vspace{4mm}%
+  {\headingfont\large\color{profCrimson} #1}\par
+  \vspace{0.5mm}{\color{profBorder}\rule{\linewidth}{0.6pt}}\par
+  \vspace{0.5mm}%
+}
+
+% ---- Placeholder marker (visible empty-state, no real content) -----------
+\newcommand{\jdplaceholder}[1]{{\color{profBorder}\itshape[#1]}\par}
+
+% ---- Bullet list styling -------------------------------------------------
+\setlist[itemize]{leftmargin=4.2mm,itemsep=2pt,topsep=2pt,
+  label=\textcolor{profCrimson}{\footnotesize\faCircle}}
+
+% ---- Footer (full-bleed, page-anchored) ----------------------------------
+% \jdfooter  — crimson mark + confidentiality line pinned to the page bottom.
+\newcommand{\jdfooter}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \coordinate (fl) at ([xshift=\profgutter,yshift=12mm]current page.south west);
+    \coordinate (fr) at ([xshift=-\profgutter,yshift=12mm]current page.south east);
+    \draw[profBorder,line width=0.6pt] (fl) -- (fr);
+    \node[anchor=west,inner sep=0pt] at ([yshift=-5mm]fl)
+      {\includegraphics[height=6mm]{\profMarkCrimson}};
+    \node[anchor=east,inner sep=0pt] at ([yshift=-5mm]fr)
+      {\footnotesize\color{profBody}%
+       TheProfesseer~\textperiodcentered~%
+       theprofesseer.com};
+  \end{tikzpicture}%
+}
+
+\endinput
